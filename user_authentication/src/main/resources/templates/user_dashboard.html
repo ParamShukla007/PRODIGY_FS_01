@@ -3,58 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>User Dashboard</title>
 </head>
 <body>
     <section>
-     <!-- Header Banner -->
-        <div class="w-full mx-auto mb-16">
-            <div class="flex">
-               
-            </div>
-        </div>
-        
         <!-- Main Content Section -->
         <div class="container mx-auto px-8 md:px-16 lg:px-24">
             <div class="flex flex-col md:flex-row gap-8 items-start">
                 <!-- Main Heading -->
                 <div class="w-full md:w-1/2">
                     <h2 class="text-5xl md:text-6xl text-brand-cream font-bold leading-tight">
-                        Contacts made simple, secure, and smart.
+                        Welcome to Your Secure Dashboard
                     </h2>
                     
                     <div class="mt-8">
-            
+                        <p class="text-brand-cream text-xl" th:text="${'Hello, ' + user.name}"></p>
                     </div>
                 </div>
                 
                 <!-- Description -->
                 <div class="w-full md:w-1/2 border-l-2 border-brand-cream pl-8">
                     <p class="text-brand-cream text-lg font-normal">
-                        We aim to transform how you organize contacts, grow your network, and streamline your communication with a smart system that caters to your ease of accessibility.
+                        Manage your account settings, view your profile, and access protected resources all in one secure location.
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- Features Section - Hidden Initially, Could Be Scrolled To -->
+        <!-- Features Section -->
         <div class="relative z-10 px-6 md:px-12 py-24 container mx-auto text-brand-cream mt-20">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 animate-fadeInUp">Smart Features</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 animate-fadeInUp">Account Features</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-               <div class="bg-brand-navy p-6 border-2 border-brand-cream transform transition-all duration-300 hover:bg-opacity-90 animate-fadeInUp delay-100">
-                    <h3 class="text-xl font-bold mb-3">Easy Organization</h3>
-                    <p class="text-sm font-normal">Categorize and manage your contacts for quick and efficient access.</p>
+                <div class="bg-brand-navy p-6 border-2 border-brand-cream transform transition-all duration-300 hover:bg-opacity-90 animate-fadeInUp delay-100">
+                    <h3 class="text-xl font-bold mb-3">Profile Management</h3>
+                    <p class="text-sm font-normal">View your profile information and manage your account settings.</p>
                 </div>
                 
                 <div class="bg-brand-navy p-6 border-2 border-brand-cream transform transition-all duration-300 hover:bg-opacity-90 animate-fadeInUp delay-300">
-                    <h3 class="text-xl font-bold mb-3">Add Contacts</h3>
-                    <p class="text-sm font-normal">Easily add new contacts to your vault with just a few clicks.</p>
+                    <h3 class="text-xl font-bold mb-3">Security Settings</h3>
+                    <p class="text-sm font-normal">Change your password and manage your security preferences.</p>
                 </div>
                 
                 <div class="bg-brand-navy p-6 border-2 border-brand-cream transform transition-all duration-300 hover:bg-opacity-90 animate-fadeInUp delay-500">
-                    <h3 class="text-xl font-bold mb-3">Edit Contacts</h3>
-                    <p class="text-sm font-normal">Update or edit your contact details anytime to keep your information current.</p>
+                    <h3 class="text-xl font-bold mb-3">Protected Content</h3>
+                    <p class="text-sm font-normal">Access your secure content and manage your private data.</p>
                 </div>
             </div>
         </div>
