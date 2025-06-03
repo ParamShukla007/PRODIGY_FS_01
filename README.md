@@ -20,6 +20,7 @@ A secure user authentication system built with Spring Boot and Thymeleaf, featur
 
 - Spring Boot
 - Spring Security
+- Spring Data JPA
 - Thymeleaf
 - MySQL Database
 - Tailwind CSS
@@ -69,8 +70,6 @@ user_authentication/
 ## Security Features
 
 - Password Encryption using BCrypt
-- Session Management
-- CSRF Protection
 - Role-based Access Control
 - Secure Password Reset
 
@@ -80,18 +79,6 @@ user_authentication/
 - `/login` - User Login
 - `/user/**` - User Protected Routes
 - `/admin/**` - Admin Protected Routes
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
