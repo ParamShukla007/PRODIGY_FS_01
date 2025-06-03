@@ -30,7 +30,7 @@ A secure user authentication system built with Spring Boot and Thymeleaf, featur
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/user-authentication.git
+git clone [https://github.com/yourusername/user-authentication.git](https://github.com/ParamShukla007/PRODIGY_FS_01.git)
 ```
 
 2. Configure MySQL database in `application.properties`:
