@@ -11,6 +11,7 @@ import com.example.authentication.user_authentication.dao.UserRepository;
 import com.example.authentication.user_authentication.entities.User;
 import jakarta.servlet.http.HttpSession;
 import com.example.authentication.user_authentication.helper.Message;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -44,25 +45,33 @@ public class HomeController {
 
     //handler for registration
     @PostMapping("/do_register")
-    public String registerUser(
-            @ModelAttribute("user") User user,
-            HttpSession session) {
+    public String registerUser(@ModelAttribute("user") User user, 
+                         @RequestParam("agreement") boolean agreement,
+                         Model model,
+                         HttpSession session) {
         try {
-            // Encrypt the password
+            if (!agreement) {
+                throw new Exception("You have not agreed to the terms and conditions");
+            }
+            
+            // Set password encoding
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-            // Set other default values (e.g., roles, enabled status)
-            user.setRole("ROLE_USER");
-
-            // Save the user to the database
-            userRepository.save(user);
-
-            // Set success message
-            session.setAttribute("message", new Message("User registered successfully!", "success"));
+            
+            // Validate role (security check)
+            if (!user.getRole().equals("USER") && !user.getRole().equals("ADMIN")) {
+                throw new Exception("Invalid role selected");
+            }
+            
+            this.userRepository.save(user);
+            
+            model.addAttribute("user", new User());
+            session.setAttribute("message", new Message("Successfully Registered!", "alert-success"));
             return "redirect:/login";
+            
         } catch (Exception e) {
             e.printStackTrace();
-            session.setAttribute("message", new Message("Something went wrong! " + e.getMessage(), "danger"));
+            model.addAttribute("user", user);
+            session.setAttribute("message", new Message("Something went wrong!" + e.getMessage(), "alert-danger"));
             return "redirect:/signup";
         }
     }

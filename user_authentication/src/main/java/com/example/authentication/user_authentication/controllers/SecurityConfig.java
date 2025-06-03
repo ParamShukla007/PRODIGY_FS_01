@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @Configuration
 @EnableWebSecurity
-public class Config {
-    
+public class SecurityConfig {
+
     @Bean
     public UserDetailsService getUserDetailService() {
         return new UserDetailsServiceImp();
@@ -34,16 +34,24 @@ public class Config {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/**").hasRole("USER")
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/user/**").hasAuthority("ROLE_USER")
+                .requestMatchers("/", "/signup", "/do_register", "/login", "/css/**", "/js/**").permitAll()
+                .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
-                .loginProcessingUrl("/do-login") 
-                .defaultSuccessUrl("/user/dashboard") 
+                .loginProcessingUrl("/do-login")
+                .defaultSuccessUrl("/default-redirect", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
             )
             .csrf(csrf -> csrf.disable());
-            
+        
         return http.build();
     }
 }
