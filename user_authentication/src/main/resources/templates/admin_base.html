@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Contact Manager</title>
+    <title>USER AUTH</title>
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -329,6 +329,12 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                         Your Profile
+                    </a>
+                      <a th:href="@{/admin/users}" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        View Users
                     </a>
                     <form method= "POST" th:action="@{'/admin/update-password1/' + ${user.user_id}}">
                         <button type="submit" class="nav-link">

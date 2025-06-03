@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -101,4 +102,12 @@ public class AdminController {
         }
         return "redirect:/admin/profile1";
     }
+
+    @GetMapping("/users")
+    public String usersList(Model model) {
+        List<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+        model.addAttribute("title", "User Management");
+        return "admin_users";
+}
 }
